@@ -1,6 +1,5 @@
 import getWikiResult from "@/lib/getWikiResult";
 import Item from "./components/Item";
-
 type Props = {
   params: {
     searchTerm: string;
@@ -8,6 +7,8 @@ type Props = {
 };
 
 export async function generateMetadata({ params: { searchTerm } }: Props) {
+  console.log("generate metadata called");
+
   const wikiData: Promise<SearchResult> = getWikiResult(searchTerm);
   const data = await wikiData;
   const displayTerm = searchTerm.replaceAll("%20", " ");
@@ -25,6 +26,8 @@ export async function generateMetadata({ params: { searchTerm } }: Props) {
 }
 
 export default async function SearchResults({ params: { searchTerm } }: Props) {
+  console.log("search results called");
+
   const wikiData: Promise<SearchResult> = getWikiResult(searchTerm);
   const data = await wikiData;
 
@@ -33,7 +36,7 @@ export default async function SearchResults({ params: { searchTerm } }: Props) {
   const content = (
     <main className="bg-slate-200 mx-auto max-w-lg py-a min-h-screen">
       {results ? (
-        Object.values(results).map((result, index) => (
+        Object.values(results).map((result) => (
           <Item key={result.pageid} result={result} />
         ))
       ) : (
