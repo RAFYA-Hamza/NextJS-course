@@ -1,4 +1,4 @@
-type Reasult = {
+type Result = {
   pageid: string;
   title: string;
   extract: string;
