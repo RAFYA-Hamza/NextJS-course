@@ -1,7 +1,12 @@
 "use client";
 const AddToCart = () => {
   return (
-    <button onClick={() => console.log("add to cart")}>Add to cart</button>
+    <button
+      className="btn btn-primary"
+      onClick={() => console.log("add to cart")}
+    >
+      Add to cart
+    </button>
   );
 };
 

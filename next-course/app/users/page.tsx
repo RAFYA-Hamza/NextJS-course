@@ -1,23 +1,10 @@
-interface User {
-  id: number;
-  name: string;
-}
+import UserTable from "./UserTable";
 
 const UsersPage = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users", {
-    // cache:"no-cache"
-    next: { revalidate: 10 },
-  });
-  const users: User[] = await res.json();
-
   return (
     <>
       <h1>User page</h1>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>{user.name}</li>
-        ))}
-      </ul>
+      <UserTable />
     </>
   );
 };
