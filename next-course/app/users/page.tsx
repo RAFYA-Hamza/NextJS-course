@@ -1,3 +1,4 @@
+import Link from "next/link";
 import UserTable from "./UserTable";
 
 interface Props {
@@ -7,7 +8,10 @@ interface Props {
 const UsersPage = async ({ searchParams: { sortOrder } }: Props) => {
   return (
     <>
-      <h1>User page</h1>
+      <h1>Users</h1>
+      <Link href="/users/new" className="btn btn-primary">
+        New user
+      </Link>
       <UserTable sortOrder={sortOrder} />
     </>
   );
