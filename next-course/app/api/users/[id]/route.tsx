@@ -10,6 +10,7 @@ export async function GET(
   // if not found, return 404 error
   // else, return data
 
+  // Geeting the uniaue user from db using the prisma
   const userId = Number(params.id);
 
   const user = await prisma.user.findUnique({
@@ -29,7 +30,7 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: number } }
+  { params }: { params: { id: string } }
 ) {
   // Validate the request
   const body = await request.json();
@@ -41,13 +42,28 @@ export async function PUT(
   // Fetch user with the given id
   // if doesn't exist, return 404
 
-  if (params.id > 11)
+  const user = await prisma.user.findUnique({
+    where: {
+      id: parseInt(params.id),
+    },
+  });
+
+  if (!user)
     return NextResponse.json({ error: "User not found" }, { status: 404 });
 
   // Update the user
+  const updatedUser = await prisma.user.update({
+    where: {
+      id: parseInt(params.id),
+    },
+    data: {
+      name: body.name,
+      email: body.email,
+    },
+  });
   // Return the updated user
 
-  return NextResponse.json({ id: 1, name: body.name });
+  return NextResponse.json(updatedUser);
 }
 
 export function DELETE(
