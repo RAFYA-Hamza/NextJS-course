@@ -21,6 +21,11 @@ const UploadPage = () => {
       )}
       <CldUploadWidget
         uploadPreset="dzvdkhtbz"
+        options={{
+          sources: ["local"],
+          multiple: false,
+          maxFiles: 5,
+        }}
         onSuccess={(result, widget) => {
           console.log(result);
 
