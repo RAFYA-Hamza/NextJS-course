@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import NavBar from "./NavBar";
 import { Suspense } from "react";
+import { AuthProvider } from "./auth/Provider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,11 +17,12 @@ export default function RootLayout({
   return (
     <html data-theme="synthwave" lang="en">
       <body>
-        <NavBar />
-
-        <main>
-          <Suspense fallback={<p>Loading...</p>}>{children}</Suspense>
-        </main>
+        <AuthProvider>
+          <NavBar />
+          <main>
+            <Suspense fallback={<p>Loading...</p>}>{children}</Suspense>
+          </main>
+        </AuthProvider>
       </body>
     </html>
   );
