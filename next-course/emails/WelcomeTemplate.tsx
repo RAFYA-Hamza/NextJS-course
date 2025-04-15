@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import {
   Body,
   Container,
@@ -6,18 +6,33 @@ import {
   Link,
   Preview,
   Text,
+  Tailwind,
 } from "@react-email/components";
 
-export const WelcomeTemplate = ({ name }: { name: string }) => {
+const WelcomeTemplate = ({ name }: { name: string }) => {
   return (
     <Html>
       <Preview>Welcome aboard!</Preview>
-      <Body>
-        <Container>
-          <Text>Hello {name}!</Text>
-          <Link href="https://react.email/">https://react.email/</Link>
-        </Container>
-      </Body>
+      <Tailwind>
+        <Body style={body}>
+          <Container>
+            <Text style={text}>Hello {name}!</Text>
+            <Link href="https://react.email/" className="text-red-400">
+              https://react.email/
+            </Link>
+          </Container>
+        </Body>
+      </Tailwind>
     </Html>
   );
 };
+
+const body: CSSProperties = {
+  background: "#fff",
+};
+
+const text: CSSProperties = {
+  color: "blue",
+};
+
+export default WelcomeTemplate;
