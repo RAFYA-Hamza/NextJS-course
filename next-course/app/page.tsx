@@ -2,6 +2,7 @@ import Link from "next/link";
 import ProductCard from "./components/ProductCard/ProductCard";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
+import { Metadata } from "next";
 // import Image from "next/image";
 
 // import myImg from "../public/images/img.png";
@@ -15,6 +16,12 @@ export default async function Home() {
       <ProductCard />
     </main>
   );
+}
+
+export async function generateMetada(): Promise<Metadata> {
+  const product = await fetch("");
+
+  return product.json();
 }
 
 // export default function page() {
