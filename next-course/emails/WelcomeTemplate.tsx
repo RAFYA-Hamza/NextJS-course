@@ -9,7 +9,15 @@ import {
   Tailwind,
 } from "@react-email/components";
 
-const WelcomeTemplate = ({ name }: { name: string }) => {
+const body: CSSProperties = {
+  background: "#fff",
+};
+
+const text: CSSProperties = {
+  color: "blue",
+};
+
+export default function WelcomeTemplate({ name }: { name: string }) {
   return (
     <Html>
       <Preview>Welcome aboard!</Preview>
@@ -25,14 +33,4 @@ const WelcomeTemplate = ({ name }: { name: string }) => {
       </Tailwind>
     </Html>
   );
-};
-
-const body: CSSProperties = {
-  background: "#fff",
-};
-
-const text: CSSProperties = {
-  color: "blue",
-};
-
-export default WelcomeTemplate;
+}
