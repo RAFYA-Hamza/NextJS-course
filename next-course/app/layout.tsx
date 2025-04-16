@@ -3,6 +3,7 @@ import "./globals.css";
 import NavBar from "./NavBar";
 import { Suspense } from "react";
 import { AuthProvider } from "./auth/Provider";
+import GoogleAnalyticsScript from "./GoogleAnalyticsScript";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,6 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html data-theme="synthwave" lang="en">
+      <GoogleAnalyticsScript />
       <body>
         <AuthProvider>
           <NavBar />
